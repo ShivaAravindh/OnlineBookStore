@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.onllinebookstore.dto.Admin;
 
@@ -46,6 +47,8 @@ public class AdminSignUp extends HttpServlet{
 //			int count = ps.executeUpdate();
 //			con.close();
 			adDao.saveAdmin(admin);
+			HttpSession session = req.getSession();
+			session.setAttribute("admin", admin);
 			resp.sendRedirect("login.html");
 			
 		} catch (Exception e) {

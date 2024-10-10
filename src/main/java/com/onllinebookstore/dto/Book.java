@@ -14,14 +14,19 @@ public class Book {
 	private String bookName;
 	private String authorName;
 	private String genre;
-	
-	
-	public Book(String bookId,String bookName, String authorName, String genre) {
+	private int adminId;
+
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
+	}
+
+	public Book(String bookId, String bookName, String authorName, String genre,int id) {
 		super();
-		this.bookId=bookId;
+		this.bookId = bookId;
 		this.bookName = bookName;
 		this.authorName = authorName;
 		this.genre = genre;
+		this.adminId=id;
 	}
 
 	public void setBookName(String bookName) {
@@ -39,18 +44,17 @@ public class Book {
 	public String getBookId() {
 		return bookId;
 	}
-	
+
 	public String getBookName() {
 		return bookName;
 	}
-	
+
 	public String getAuthorName() {
 		return authorName;
 	}
-	
+
 	public String getGenre() {
 		return genre;
 	}
-	
-	
+
 }

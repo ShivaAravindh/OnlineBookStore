@@ -10,8 +10,6 @@ import javax.persistence.Persistence;
 
 import com.onllinebookstore.dto.Admin;
 
-
-
 public class AdminDao {
 //	Admin 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("onlinebookstore");

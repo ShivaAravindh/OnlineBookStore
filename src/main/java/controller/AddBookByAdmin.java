@@ -13,7 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.onllinebookstore.dto.Admin;
 import com.onllinebookstore.dto.Book;
 
 import dao.BookDao;
@@ -30,12 +32,14 @@ public class AddBookByAdmin extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		try {
 			bookName = req.getParameter("bookname");
 			authorName =req.getParameter("authorName");
 			genre=req.getParameter("genre");
-			Book book = new Book(bookId,bookName,authorName,genre);
+			HttpSession session = req.getSession();
+			Admin sessionAdmin = (Admin)session.getAttribute("admin");
+			
+			Book book = new Book(bookId,bookName,authorName,genre,sessionAdmin.getId());
 			BookDao bookDao=new BookDao();
 //			Class.forName("com.mysql.cj.jdbc.Driver");
 //			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinebookstore","root","root");
